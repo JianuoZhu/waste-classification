@@ -20,12 +20,11 @@ class WasteDataset(Dataset):
         
         # 将标签转换为 Tensor
         match label:
-            case "plastic": label = 0
-            case "paper&cardboard": label = 1
-            case "metal": label = 2
-            case "others": label = 3
-            case _: label = 3
-
+            case "plastic": label = torch.tensor(0)
+            case "paper&cardboard": label = torch.tensor(1)
+            case "metal": label = torch.tensor(2)
+            case "others": label = torch.tensor(3)
+            case _: label = torch.tensor(3)
         return image, label
 
 def load_dataset(annotations_file, batch_size=32, img_size=224):
